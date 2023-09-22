@@ -72,11 +72,8 @@ public class Fibonacci
 
     private static readonly Random _random = Random.Shared;
 
-    public int _totalFibCalls = 0;
-
     public async Task<ulong> Fib(uint fibIndex)
     {
-        _totalFibCalls++;
         int msToWait = _random.Next(1000);
         await Task.Delay(msToWait);
 
