@@ -72,8 +72,11 @@ public class Fibonacci
 
     private static readonly Random _random = Random.Shared;
 
+    public int _totalFibCalls = 0;
+
     public async Task<ulong> Fib(uint fibIndex)
     {
+        _totalFibCalls++;
         int msToWait = _random.Next(1000);
         await Task.Delay(msToWait);
 
@@ -90,14 +93,12 @@ public class Fibonacci
         {
             // Not found in the dictionary, need to calculate it
             nMinusTwo = await Fib(fibIndex - 2);
-            _discoveredNumbers.TryAdd((int)fibIndex - 2, nMinusTwo);
         }
 
         if (!_discoveredNumbers.TryGetValue((int)fibIndex - 1, out ulong nMinusOne))
         {
             // Not found in the dictionary, need to calculate it
             nMinusOne = await Fib(fibIndex - 1);
-            _discoveredNumbers.TryAdd((int)fibIndex - 1, nMinusOne);
         }
 
         ulong fibSum = nMinusOne + nMinusTwo;
