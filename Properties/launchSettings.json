@@ -1,0 +1,8 @@
+{
+  "profiles": {
+    "AsyncFibonacci": {
+      "commandName": "Project",
+      "commandLineArgs": "94"
+    }
+  }
+}
